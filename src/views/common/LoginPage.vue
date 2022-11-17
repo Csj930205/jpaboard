@@ -8,7 +8,7 @@
             <input class="w3-input" name="uid" placeholder="아이디를 입력하세요." v-model="user_id"><br>
           </p>
           <p>
-            <input class="w3-input" name="password" placeholder="패스워드를 입력하세요." v-model="user_password" type="password">
+            <input class="w3-input" name="password" placeholder="패스워드를 입력하세요." v-model="user_pw" type="password">
           </p>
           <p>
             <button class="w3-button w3-green w3-round" type="submit">로그인</button>
@@ -20,30 +20,30 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters} from 'vuex' // vuex 추가
 
 export default {
   data() {
     return {
       user_id: '',
-      user_password: ''
+      user_pw: ''
     }
   },
   methods: {
-    ...mapActions(['login']),   //vuex/actions 에 있는 login 함수
+    ...mapActions(['login']),   // vuex/actions 에 있는 login 함수
 
     async fnLogin() { // async 함수로 변경
       if (this.user_id === '') {
         alert('아이디를 입력해주세요.')
         return
       }
-      if (this.user_password === '') {
+      if (this.user_pw === '') {
         alert('패스워드를 입력해주세요.')
       }
 
       // 로그인 API 호출
       try {
-        let loginResult = await this.login({user_id: this.user_id, user_pw: this.user_password})
+        let loginResult = await this.login({user_id: this.user_id, user_pw: this.user_pw})
         if (loginResult) {
           alert('로그인결과' + loginResult)
         }

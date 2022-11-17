@@ -13,7 +13,7 @@ let setErrorState = ({commit}, data) => {
 let setIsAuth = ({commit}, data) => {
     commit(IS_AUTH, data)
 }
-// 백엔드에서 반환한 결과값을 가지고 로긍ㄴ 성공 실패 여불르 vuex에 넣어준다.
+// 백엔드에서 반환한 결과값을 가지고 로그인 성공 실패 여부로 vuex에 넣어준다.
 let processResponse = (store, loginResponse) => {
     switch (loginResponse) {
         case 'notFound':

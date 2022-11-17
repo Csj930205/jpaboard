@@ -1,16 +1,19 @@
+import axios from "axios";
+
 const getUserInfo = (userId, userPw) => {
     const reqData = {
         'user_id': userId,
         'user_pw': userPw
     }
-    return {
-        'data': {
-            'user_id': reqData.user_id,
-            'user_token': 'user_test_token',
-            'user_role': 'ADM'
+    let serverUrl = '//localhost:8888'
+    return axios.post(serverUrl + '/user/login', reqData, {
+        headers: {
+            // 'Access-Control-Allow-Origin': '*',
+            'Content-type': 'application/json'
         }
-    }
+    })
 }
+
 export default {
     async doLogin(userId, userPw) {
         try {
